@@ -1,0 +1,1 @@
+export { catalogModuleBitbucketSingleBranch as default } from './src/module';

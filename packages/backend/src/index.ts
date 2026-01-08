@@ -25,6 +25,7 @@ backend.add(import('@backstage/plugin-techdocs-backend'));
 
 // auth plugin
 backend.add(import('@backstage/plugin-auth-backend'));
+backend.add(import('@backstage/plugin-auth-backend-module-bitbucket-provider'));
 // See https://backstage.io/docs/backend-system/building-backends/migrating#the-auth-plugin
 backend.add(import('@backstage/plugin-auth-backend-module-guest-provider'));
 // See https://backstage.io/docs/auth/guest/provider
@@ -37,6 +38,12 @@ backend.add(
 
 // See https://backstage.io/docs/features/software-catalog/configuration#subscribing-to-catalog-errors
 backend.add(import('@backstage/plugin-catalog-backend-module-logs'));
+
+// backend.add(import('@backstage/plugin-events-backend-module-bitbucket-cloud'));
+backend.add(import('@backstage/plugin-catalog-backend-module-bitbucket-cloud'));
+backend.add(
+  import('../../../plugins/catalog-backend-module-bitbucket-single-branch')
+);
 
 // permission plugin
 backend.add(import('@backstage/plugin-permission-backend'));
@@ -62,5 +69,6 @@ backend.add(import('@backstage/plugin-kubernetes-backend'));
 // notifications and signals plugins
 backend.add(import('@backstage/plugin-notifications-backend'));
 backend.add(import('@backstage/plugin-signals-backend'));
+
 
 backend.start();

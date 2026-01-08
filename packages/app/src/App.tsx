@@ -37,6 +37,10 @@ import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
+import { bitbucketAuthApiRef } from '@backstage/core-plugin-api';
+import { TechRadarPage } from '@backstage-community/plugin-tech-radar';
+import { HomePage } from './components/home/HomePage';
+import { HomepageCompositionRoot } from '@backstage/plugin-home';
 
 const app = createApp({
   apis,
@@ -58,13 +62,28 @@ const app = createApp({
     });
   },
   components: {
-    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
+    SignInPage: props => (
+      <SignInPage
+        {...props}
+        auto
+        provider={{
+          id: 'bitbucket-auth-provider',
+          title: 'Bitbucket',
+          message: 'Sign in using Bitbucket',
+          apiRef: bitbucketAuthApiRef,
+        }}
+      />
+    ),
   },
 });
 
 const routes = (
   <FlatRoutes>
+    <Route path="/" element={<HomepageCompositionRoot />}>
+      <HomePage />
+    </Route>
     <Route path="/" element={<Navigate to="catalog" />} />
+    <Route path="/tech-radar" element={<TechRadarPage />} />
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"

@@ -7,7 +7,7 @@
     "plugins/*/config.d.ts",
     "plugins/*/dev",
     "plugins/*/migrations"
-  ],
+, "plugins/catalog-backend-module-bitbucket-single-branch/index.ts"  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "dist-types",
