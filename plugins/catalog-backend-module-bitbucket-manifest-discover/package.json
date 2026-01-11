@@ -1,0 +1,10 @@
+{
+  "name": "@internal/catalog-backend-module-bitbucket-manifest-discover",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "backstage": {
+    "role": "backend-plugin-module"
+  }
+}

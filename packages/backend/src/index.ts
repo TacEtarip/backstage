@@ -44,6 +44,9 @@ backend.add(import('@backstage/plugin-catalog-backend-module-bitbucket-cloud'));
 backend.add(
   import('../../../plugins/catalog-backend-module-bitbucket-single-branch')
 );
+backend.add(
+  import('../../../plugins/catalog-backend-module-bitbucket-manifest-discover')
+);
 
 // permission plugin
 backend.add(import('@backstage/plugin-permission-backend'));
