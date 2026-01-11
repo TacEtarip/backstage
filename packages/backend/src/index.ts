@@ -41,11 +41,11 @@ backend.add(import('@backstage/plugin-catalog-backend-module-logs'));
 
 // backend.add(import('@backstage/plugin-events-backend-module-bitbucket-cloud'));
 backend.add(import('@backstage/plugin-catalog-backend-module-bitbucket-cloud'));
+// backend.add(
+//   import('../../../plugins/catalog-backend-module-bitbucket-single-branch')
+// );
 backend.add(
-  import('../../../plugins/catalog-backend-module-bitbucket-single-branch')
-);
-backend.add(
-  import('../../../plugins/catalog-backend-module-bitbucket-manifest-discover')
+  import('@internal/catalog-backend-module-bitbucket-manifest-discover'),
 );
 
 // permission plugin
@@ -72,6 +72,5 @@ backend.add(import('@backstage/plugin-kubernetes-backend'));
 // notifications and signals plugins
 backend.add(import('@backstage/plugin-notifications-backend'));
 backend.add(import('@backstage/plugin-signals-backend'));
-
 
 backend.start();

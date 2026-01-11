@@ -39,7 +39,7 @@ backend:
 integrations:
   bitbucketCloud:
     - username: hu3rtas@outlook.com
-      token: my-token
+      token: ${BITBUCKET_TOKEN}
 
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
@@ -80,13 +80,20 @@ catalog:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   providers:
-    bitbucketSingleBranch:
-      workspace: tacetarip
-      branch: ${CATALOG_BRANCH}
-      catalogPath: catalog-info.yaml
+    bitbucketManifestDiscover:
+      manifestUrl: https://bitbucket.org/tacetarip/manifest-repo/raw/main/manifest.yaml
+      defaultBranch: main # optional, defaults to main
+      defaultCatalogInfoPath: catalog-info.yaml # optional, defaults to catalog-info.yaml
       schedule:
-        frequencyMinutes: 10
-        timeoutMinutes: 2
+        frequency: { hours: 1 } # check manifest every hour
+        timeout: { minutes: 5 }
+    # bitbucketSingleBranch:
+    #   workspace: tacetarip
+    #   branch: ${CATALOG_BRANCH}
+    #   catalogPath: catalog-info.yaml
+    #   schedule:
+    #     frequencyMinutes: 10
+    #     timeoutMinutes: 2
     # bitbucketCloud:
     #   tacetarip: # identifies your ingested dataset
     #     catalogPath: /catalog-info.yaml # default value

@@ -77,7 +77,7 @@ export class VersionStore {
     this.logger.info('Running Bitbucket Manifest Discover migrations...');
 
     await this.db.migrate.latest({
-      directory: require('path').resolve(__dirname, '../migrations'),
+      directory: require('node:path').resolve(__dirname, '../migrations'),
       tableName: 'knex_migrations_bitbucket_manifest',
     });
 
